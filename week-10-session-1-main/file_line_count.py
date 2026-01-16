@@ -4,8 +4,8 @@ import sys
 # Usage: python file_line_count.py <filename>
 # example: python file_line_count.py testdir/dust_of_snow.txt
 
-if len(sys.arv) < 2:
-    print(f"No file supplied: python {sys.argv[0]}", file=sys.stderr)
+if len(sys.argv) < 2:
+    print("Usage: python file_line_count.py <filename.txt>", file=sys.stderr)
     sys.exit(1)
 
 file_name = sys.argv[1]
@@ -23,6 +23,6 @@ try:
 
     print(f"{file_name} has {number_of_lines} lines.")
 except:
-    print(f"File not found: python {sys.argv[0]} {file_name}", file=sys.stderr)
+    print(f"File not found: python file_line_count.py {file_name}", file=sys.stderr)
     sys.exit(1)
 
