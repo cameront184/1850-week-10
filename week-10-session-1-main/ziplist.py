@@ -14,13 +14,14 @@ if len(sys.argv) < 2:
 
 archive_filename = sys.argv[1]
 
+if not zipfile.is_zipfile(archive_filename):                                 # error message if the file the user inputed is not a zip
+    print("file is not a zip file", file=sys.stderr)                         # all error mesages pass to the stderr channel if it fails
+
 try:
-    with zipfile(archive_filename, "r") as infile:         # Used a zipfile.namelist to list the contents in the zip
-        for name in zipfile.namelist():
+    with ZipFile(archive_filename, "r") as infile:         # Used a zipfile.namelist to list the contents in the zip
+        for name in infile.namelist():
             print(name)
 except:
     print("Filename given but file does not exist", file=sys.stderr)         # error message for if the file that the user has inputed doesnt exist
 
-if not zipfile.is_zipfile(archive_filename):                                 # error message if the file the user inputed is not a zip
-    print("file is not a zip file", file=sys.stderr)                         # all error mesages pass to the stderr channel if it fails
 
